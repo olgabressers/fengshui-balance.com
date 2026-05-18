@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name='author' content="http://uniquesite.ru">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+    </script>
+      	<meta name="description" content="" />
+  	<meta name="keywords" content="" />
+  	<title></title>
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css">
+    <!-- <script src='http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU'></script> -->
+  	<link rel="stylesheet" href="css/index.css">
+    <script src='js/calc24.js'></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7p6Wj-1BN2HycCoCk1CX5An-q1EqT9zI&libraries=places&callback=gmap"></script>
+
+    <!--  wp menu kostil-->
+    <link rel="stylesheet" id="divi-style-css" href="/wp-content/themes/Divi/style.css?ver=3.0.69" type="text/css" media="all">
+
+    <link rel="stylesheet" id="mc4wp-form-themes-css" href="/wp-content/plugins/mailchimp-for-wp/assets/css/form-themes.min.css?ver=4.2" type="text/css" media="all">
+    <link rel="stylesheet" id="dashicons-css" href="/wp-includes/css/dashicons.min.css?ver=4.9.4" type="text/css" media="all">
+    <!-- <link rel="stylesheet" id="et-core-unified-cached-inline-styles" href="/wp-content/cache/et/584/et-core-unified-15218865378701.min.css"> -->
+  </head>
+  <body>
+<div class="container-fluid">
+  <div id="wp_nav_menu" style="display:none"></div>
+  <div id="site_menu">
+
+  </div>
+  <div class="row" style="position: relative">
+    <div class="col-md-12" id='maps'>
+
+      <div id="map_menu">
+        <a href="/instruments/24mount/?map=yandex" style="margin-left: 20px; padding: 10px" id='ymaps'>Yandex</a>
+        <a href="/instruments/24mount/?map=google" style="margin-left: 20px; padding: 10px" id='gmaps'>Google</a>
+        <br><br>
+        <span class="label label-default">Адрес</span>
+        <div class="input-group">
+          <input type="text" class="form-control" name="address" placeholder="Город улица дом">
+          <input type="hidden" name="lat" value="52.37">
+          <input type="hidden" name="lon" value="4.89">
+          <div class="input-group-btn">
+            <button class="btn btn-default" name='search' id='search'>
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+          </div>
+        </div>
+        <span class="label label-default">Тип Шаблона</span>
+        <select class="form-control" id="24mounts" >
+          <option value='0'>Выбрать</option>
+          <option value='1'>Сань Юань</option>
+          <option value='2'>Сань Хэ</option>
+          <option value='3'>12 Ветвей</option>
+        </select>
+
+          <span class="label label-default">Год расчета</span>
+          <input type="number" class="form-control" name="year" value="2026" min="2000" max="2027">
+          <span class="label label-default">Месяц расчета</span>
+          <input type="number" class="form-control" name="mounth" value="05" min='1' max="12">
+          <span class="label label-default">Градус фасада</span>
+          <input type="number" class="form-control" name="fasad_degree" step="0.1" value="0" min='0' max="359.99">
+          <span class="label label-default">Градус магнитного отклонения</span>
+          <div class="input-group">
+            <input type="text" class="form-control" name='declination' checked='false'>
+            <div class="input-group-btn">
+              <input type="checkbox" name="declination_check">
+              <button class="btn btn-default" name='declination_switch'>
+                <i class="fa fa-check"></i>
+              </button>
+            </div>
+          </div>
+          <span class="label label-default">ГУА Дома</span>
+          <input type="number" class="form-control" name="goahome" id='goahome' value="9">
+      </div>
+      <div id="map_settings">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="630" height="630" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" id="svg24mounts">
+	<g id="12vetvey_lines" style="display:none" transform="rotate(0 315 315)">
+		<path fill="none" stroke="#000000" d="M368.12592044589877,300.7649525193614L619.2666352810566,233.47200079270598" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M353.8908729652601,276.10912703473986L537.7386360737624,92.2613639262375" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M329.2350474806386,261.87407955410123L396.5279992072939,10.733364718943449" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M300.7649525193614,261.87407955410123L233.472000792706,10.733364718943506" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M276.10912703473986,276.1091270347399L92.2613639262375,92.26136392623755" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M261.87407955410123,300.7649525193614L10.733364718943449,233.47200079270607" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M261.87407955410123,329.2350474806386L10.733364718943506,396.5279992072941" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M276.1091270347399,353.8908729652601L92.26136392623755,537.7386360737624" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M300.7649525193614,368.12592044589877L233.47200079270593,619.2666352810566" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M329.2350474806386,368.12592044589877L396.52799920729404,619.2666352810566" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M353.8908729652601,353.8908729652601L537.7386360737624,537.7386360737624" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+		<path fill="none" stroke="#000000" d="M368.12592044589877,329.2350474806386L619.2666352810566,396.52799920729404" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></path>
+	</g>
+	<g id="sanhe_lines" style="display:none" transform="rotate(0 315 315)">
+		<path fill="none" stroke="#000000" d="M257.8009910323427,101.53039239011596L233.47200079270573,10.733364718943562" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M293.98528305257156,155.37737731881654L273.88424945068346,2.69486866724975" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M204.4999999999999,123.60838576363909L157.49999999999986,42.201997807901876" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M293.95241121992,264.18662571187923L194.45471880499656,23.977947258944766" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M158.72940135777296,158.729401357773L92.2613639262375,92.26136392623755" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M216.98940992959592,187.2701122131112L123.24014986225293,65.093697808261" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M123.60838576363898,204.5000000000001L42.201997807901705,157.5000000000002" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M187.27011221311105,216.9894099295961L65.09369780826074,123.24014986225325" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M101.53039239011588,257.800991032343L10.733364718943449,233.47200079270607" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M264.18662571187923,293.9524112199201L23.977947258944596,194.4547188049969" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M94,315L0,315.00000000000006" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M155.3773773188165,293.98528305257173L2.6948686672496933,273.88424945068385" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M101.53039239011596,372.1990089676572L10.733364718943562,396.5279992072943" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M155.37737731881654,336.01471694742844L2.69486866724975,356.11575054931654" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M123.60838576363909,425.50000000000006L42.201997807901876,472.5000000000001" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M264.18662571187923,336.04758878008L23.977947258944766,435.54528119500344" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M158.72940135777307,471.2705986422271L92.26136392623766,537.7386360737626" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M187.2701122131112,413.01059007040413L65.09369780826106,506.7598501377472" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M204.50000000000006,506.39161423636097L157.50000000000006,587.7980021920982" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M216.98940992959604,442.72988778688887L123.2401498622531,564.9063021917391" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M257.800991032343,528.4696076098842L233.47200079270607,619.2666352810566" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M293.95241121992007,365.81337428812077L194.4547188049968,606.0220527410554" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M315,536L315,630" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M293.9852830525717,474.62262268118343L273.88424945068374,627.3051313327503" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M372.19900896765716,528.4696076098841L396.5279992072941,619.2666352810566" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M336.0147169474283,474.62262268118343L356.1157505493163,627.3051313327503" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M425.50000000000006,506.3916142363609L472.5000000000001,587.7980021920981" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M336.04758878007993,365.81337428812077L435.5452811950033,606.0220527410553" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M471.270598642227,471.270598642227L537.7386360737624,537.7386360737624" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M413.010590070404,442.72988778688887L506.759850137747,564.9063021917391" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M506.39161423636097,425.49999999999994L587.7980021920982,472.49999999999994" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M442.72988778688887,413.01059007040396L564.9063021917391,506.7598501377469" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M528.4696076098841,372.19900896765705L619.2666352810566,396.527999207294" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M365.81337428812077,336.04758878007993L606.0220527410554,435.5452811950032" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M536,315L630,315" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M474.62262268118343,336.0147169474283L627.3051313327503,356.11575054931626" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M528.4696076098841,257.8009910323429L619.2666352810566,233.4720007927059" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M474.62262268118343,293.9852830525717L627.3051313327503,273.8842494506837" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M506.39161423636097,204.5L587.7980021920982,157.5" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M365.81337428812077,293.95241121992007L606.0220527410554,194.4547188049967" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M471.270598642227,158.729401357773L537.7386360737624,92.26136392623755" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M442.72988778688887,216.98940992959598L564.9063021917391,123.24014986225299" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M425.5,123.60838576363903L472.5,42.20199780790182" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M413.010590070404,187.27011221311113L506.759850137747,65.09369780826088" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M372.1990089676571,101.5303923901159L396.52799920729404,10.733364718943506" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M336.04758878007993,264.18662571187923L435.5452811950033,23.977947258944653" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M315,94L315,0" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6" stroke-dasharray="2,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 0.6; "></path>
+		<path fill="none" stroke="#000000" d="M336.0147169474283,155.37737731881654L356.1157505493163,2.69486866724975" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M293.98528305257156,155.37737731881654L273.88424945068346,2.69486866724975" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M293.95241121992,264.18662571187923L194.45471880499656,23.977947258944766" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+	</g>
+	<g id="sanuan_lines" style="display:none" transform="rotate(0 315 315)">
+		<path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000" d="M293.95241121992,264.18662571187923L194.45471880499656,23.977947258944766" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "/>
+		<path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000" d="M293.98528305257156,155.37737731881654L273.88424945068346,2.69486866724975" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "/>
+		<path fill="none" stroke="#000000" d="M216.98940992959592,187.2701122131112L123.24014986225293,65.093697808261" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M187.27011221311105,216.9894099295961L65.09369780826074,123.24014986225325" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M264.18662571187923,293.9524112199201L23.977947258944596,194.4547188049969" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M155.3773773188165,293.98528305257173L2.6948686672496933,273.88424945068385" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M155.37737731881654,336.01471694742844L2.69486866724975,356.11575054931654" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M264.18662571187923,336.04758878008L23.977947258944766,435.54528119500344" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M187.2701122131112,413.01059007040413L65.09369780826106,506.7598501377472" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M216.98940992959604,442.72988778688887L123.2401498622531,564.9063021917391" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M293.95241121992007,365.81337428812077L194.4547188049968,606.0220527410554" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M293.9852830525717,474.62262268118343L273.88424945068374,627.3051313327503" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M336.0147169474283,474.62262268118343L356.1157505493163,627.3051313327503" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M336.04758878007993,365.81337428812077L435.5452811950033,606.0220527410553" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M413.010590070404,442.72988778688887L506.759850137747,564.9063021917391" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M442.72988778688887,413.01059007040396L564.9063021917391,506.7598501377469" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M365.81337428812077,336.04758878007993L606.0220527410554,435.5452811950032" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M474.62262268118343,336.0147169474283L627.3051313327503,356.11575054931626" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M474.62262268118343,293.9852830525717L627.3051313327503,273.8842494506837" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M365.81337428812077,293.95241121992007L606.0220527410554,194.4547188049967" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M442.72988778688887,216.98940992959598L564.9063021917391,123.24014986225299" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M413.010590070404,187.27011221311113L506.759850137747,65.09369780826088" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M336.04758878007993,264.18662571187923L435.5452811950033,23.977947258944653" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#000000" d="M336.0147169474283,155.37737731881654L356.1157505493163,2.69486866724975" stroke-width="1" stroke-linecap="round" stroke-opacity="1" stroke-dasharray="7,4,0,4,0,4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; "></path>
+	</g>
+	<g id="sanuan" style="display:none" transform="rotate(0 315 315)">
+		<circle cx="315" cy="315" r="55" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; display: block;"></circle>
+		<circle cx="315" cy="315" r="161" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<circle cx="315" cy="315" r="178" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<circle cx="315" cy="315" r="223" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<image x="61.5" y="61.5" width="507" height="507" preserveAspectRatio="none" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sanuan.png" opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.8; display: block;"></image>
+		<path fill="#ffffff" stroke="none" d="M315,315L273.88424945068374,2.69486866724975A315,315,1,0,1,356.1157505493163,2.69486866724975Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L356.1157505493163,2.69486866724975A315,315,1,0,1,435.5452811950033,23.977947258944653Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L435.5452811950033,23.977947258944653A315,315,1,0,1,506.759850137747,65.09369780826091Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L506.759850137747,65.09369780826091A315,315,1,0,1,564.9063021917391,123.24014986225299Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L564.9063021917391,123.24014986225299A315,315,1,0,1,606.0220527410554,194.45471880499673Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L606.0220527410554,194.45471880499673A315,315,1,0,1,627.3051313327503,273.88424945068374Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L627.3051313327503,273.88424945068374A315,315,1,0,1,627.3051313327503,356.11575054931626Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L627.3051313327503,356.11575054931626A315,315,1,0,1,606.0220527410554,435.54528119500327Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L606.0220527410554,435.54528119500327A315,315,1,0,1,564.9063021917391,506.759850137747Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L564.9063021917391,506.759850137747A315,315,1,0,1,506.759850137747,564.9063021917391Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L506.759850137747,564.9063021917391A315,315,1,0,1,435.5452811950033,606.0220527410554Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L435.5452811950033,606.0220527410554A315,315,1,0,1,356.1157505493163,627.3051313327503Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L356.1157505493163,627.3051313327503A315,315,1,0,1,273.88424945068374,627.3051313327503Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L273.88424945068374,627.3051313327503A315,315,1,0,1,194.45471880499673,606.0220527410554Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L194.45471880499673,606.0220527410554A315,315,1,0,1,123.24014986225299,564.9063021917391Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L123.24014986225299,564.9063021917391A315,315,1,0,1,65.09369780826097,506.7598501377471Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L65.09369780826097,506.7598501377471A315,315,1,0,1,23.977947258944653,435.5452811950033Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L23.977947258944653,435.5452811950033A315,315,1,0,1,2.69486866724975,356.11575054931626Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L2.69486866724975,356.11575054931626A315,315,1,0,1,2.6948686672496933,273.88424945068385Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L2.6948686672496933,273.88424945068385A315,315,1,0,1,23.977947258944653,194.45471880499676Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L23.977947258944653,194.45471880499676A315,315,1,0,1,65.09369780826091,123.24014986225299Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L65.09369780826091,123.24014986225299A315,315,1,0,1,123.24014986225293,65.093697808261Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L123.24014986225293,65.093697808261A315,315,1,0,1,194.4547188049968,23.977947258944653Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L194.4547188049968,23.977947258944653A315,315,1,0,1,273.88424945068374,2.69486866724975Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+	</g>
+	<g id="sanhe" style="display:none" transform="rotate(0 315 315)">
+		<circle cx="315" cy="315" r="55" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1; display: block;"></circle>
+		<circle cx="315" cy="315" r="163" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<circle cx="315" cy="315" r="178" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<circle cx="315" cy="315" r="221" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<circle cx="315" cy="315" r="249" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8; display: block;"></circle>
+		<image x="34.5" y="34.5" width="561" height="561" preserveAspectRatio="none" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sanhe.png" opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.8; display: block;"></image>
+		<path fill="#ffffff" stroke="none" d="M315,315L273.88424945068374,2.69486866724975A315,315,1,0,1,356.11575054931615,2.6948686672496933Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L356.11575054931615,2.6948686672496933A315,315,1,0,1,435.5452811950033,23.97794725894471Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L435.5452811950033,23.97794725894471A315,315,1,0,1,506.759850137747,65.09369780826091Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L506.759850137747,65.09369780826091A315,315,1,0,1,564.906302191739,123.24014986225293Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L564.906302191739,123.24014986225293A315,315,1,0,1,606.0220527410554,194.4547188049968Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L606.0220527410554,194.4547188049968A315,315,1,0,1,627.3051313327503,273.88424945068374Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L627.3051313327503,273.88424945068374A315,315,1,0,1,627.3051313327503,356.11575054931615Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L627.3051313327503,356.11575054931615A315,315,1,0,1,606.0220527410554,435.5452811950033Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L606.0220527410554,435.5452811950033A315,315,1,0,1,564.9063021917391,506.759850137747Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L564.9063021917391,506.759850137747A315,315,1,0,1,506.7598501377471,564.906302191739Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L506.7598501377471,564.906302191739A315,315,1,0,1,435.5452811950032,606.0220527410554Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L435.5452811950032,606.0220527410554A315,315,1,0,1,356.1157505493163,627.3051313327503Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L356.1157505493163,627.3051313327503A315,315,1,0,1,273.8842494506839,627.3051313327503Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L273.8842494506839,627.3051313327503A315,315,1,0,1,194.45471880499667,606.0220527410554Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L194.45471880499667,606.0220527410554A315,315,1,0,1,123.24014986225308,564.9063021917391Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L123.24014986225308,564.9063021917391A315,315,1,0,1,65.09369780826103,506.7598501377471Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L65.09369780826103,506.7598501377471A315,315,1,0,1,23.977947258944766,435.5452811950035Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L23.977947258944766,435.5452811950035A315,315,1,0,1,2.6948686672496933,356.11575054931603Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L2.6948686672496933,356.11575054931603A315,315,1,0,1,2.69486866724975,273.8842494506836Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L2.69486866724975,273.8842494506836A315,315,1,0,1,23.977947258944653,194.4547188049967Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L23.977947258944653,194.4547188049967A315,315,1,0,1,65.09369780826088,123.24014986225308Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L65.09369780826088,123.24014986225308A315,315,1,0,1,123.24014986225285,65.09369780826103Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L123.24014986225285,65.09369780826103A315,315,1,0,1,194.45471880499647,23.977947258944766Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L194.45471880499647,23.977947258944766A315,315,1,0,1,273.8842494506839,2.6948686672496933Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; display: block;"></path>
+	</g>
+	<g id="12vetvey" style="display:none" transform="rotate(0 315 315)">
+		<circle cx="315" cy="315" r="55" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-linecap: round; stroke-opacity: 1;"></circle>
+		<circle cx="315" cy="315" r="173" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8;"></circle>
+		<circle cx="315" cy="315" r="223" fill="none" stroke="#000000" stroke-width="1" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-width: 1; stroke-opacity: 0.8;"></circle>
+		<image x="61.5" y="61.5" width="507" height="507" preserveAspectRatio="none" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/12vetvey.png" opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.8;"></image>
+		<path fill="#ffffff" stroke="none" d="M315,315L619.2666352810566,396.52799920729404A315,315,1,0,1,537.7386360737624,537.7386360737624Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L537.7386360737624,537.7386360737624A315,315,1,0,1,396.52799920729404,619.2666352810566Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L396.52799920729404,619.2666352810566A315,315,1,0,1,233.47200079270593,619.2666352810566Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L233.47200079270593,619.2666352810566A315,315,1,0,1,92.26136392623755,537.7386360737624Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L92.26136392623755,537.7386360737624A315,315,1,0,1,10.733364718943506,396.5279992072941Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L10.733364718943506,396.5279992072941A315,315,1,0,1,10.733364718943506,233.47200079270596Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L10.733364718943506,233.47200079270596A315,315,1,0,1,92.2613639262375,92.26136392623755Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L92.2613639262375,92.26136392623755A315,315,1,0,1,233.472000792706,10.733364718943506Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L233.472000792706,10.733364718943506A315,315,1,0,1,396.5279992072939,10.733364718943449Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L396.5279992072939,10.733364718943449A315,315,1,0,1,537.7386360737624,92.2613639262375Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L537.7386360737624,92.2613639262375A315,315,1,0,1,619.2666352810566,233.47200079270598Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<path fill="#ffffff" stroke="none" d="M315,315L619.2666352810566,233.47200079270598A315,315,1,0,1,619.2666352810566,396.52799920729404Z" fill-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0;"></path>
+		<rect x="317.2363867975462" y="178.2718512002707" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="342.2363867975462" cy="190.2718512002707" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+	</g>
+	<g id="svg_number" style="display:none" transform="rotate(0 315 315)">
+			<a xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+				<text x="342.2363867975462" y="196.5218518146039" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">6</tspan>
+				</text>
+			</a>
+			<circle cx="342.2363867975462" cy="216.2718512002707" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+			<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+				<text x="342.2363867975462" y="221.7718518146039" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+					<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2</tspan>
+				</text>
+			</a>
+		<text x="342.2363867975462" y="198.2718518146039" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7  1</tspan>
+			<tspan dy="24" x="342.2363867975462" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">4</tspan>
+		</text>
+		<rect x="388.2627654652729" y="230.25530213385642" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="413.2627654652729" cy="242.25530213385642" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="413.2627654652729" y="248.50530946790815" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">4</tspan>
+			</text>
+		</a>
+		<circle cx="413.2627654652729" cy="268.2553021338564" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="413.2627654652729" y="273.75529420911903" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">9</tspan>
+			</text>
+		</a>
+		<text x="413.2627654652729" y="250.25530183851362" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+		<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">5  8</tspan>
+		<tspan dy="24" x="413.2627654652729" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2</tspan>
+		</text>
+		<rect x="401.7281487997293" y="317.2363867975462" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="426.7281487997293" cy="329.2363867975462" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="426.7281487997293" y="335.4863844349361" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">8</tspan>
+			</text>
+		</a>
+		<circle cx="426.7281487997293" cy="355.2363867975462" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="426.7281487997293" y="360.7363844349361" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">4</tspan>
+			</text>
+		</a>
+		<text x="426.7281487997293" y="337.2363844349361" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">9  3</tspan>
+			<tspan dy="24" x="426.7281487997293" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">6</tspan>
+		</text>
+		<rect x="349.7446978661436" y="388.2627654652729" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="374.7446978661436" cy="400.2627654652729" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="374.7446978661436" y="406.5127745828895" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">9</tspan>
+			</text>
+		</a>
+		<circle cx="374.7446978661436" cy="426.2627654652729" r="10" fill="#ee0000" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="374.7446978661436" y="431.7627745828895" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">5</tspan>
+			</text>
+		</a>
+		<text x="374.7446978661436" y="408.2627745828895" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1  4</tspan>
+			<tspan dy="24" x="374.7446978661436" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7</tspan>
+		</text>
+		<rect x="262.7636132024539" y="401.7281487997293" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="287.7636132024539" cy="413.7281487997293" r="10" fill="#ee0000" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="287.7636132024539" y="419.9781481853961" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">5</tspan>
+			</text>
+		</a>
+		<circle cx="287.7636132024539" cy="439.7281487997293" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="287.7636132024539" y="445.2281481853961" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1</tspan>
+			</text>
+		</a>
+		<text x="287.7636132024539" y="421.7281481853961" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">6  9</tspan>
+			<tspan dy="24" x="287.7636132024539" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3</tspan>
+		</text>
+		<rect x="191.73723453472718" y="349.7446978661436" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="216.73723453472718" cy="361.7446978661436" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="216.73723453472718" y="367.99470579088097" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7</tspan>
+			</text>
+		</a>
+		<circle cx="216.73723453472718" cy="387.7446978661436" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="216.73723453472718" y="393.24470579088097" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3</tspan>
+			</text>
+		</a>
+		<text x="216.73723453472718" y="369.74470579088097" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">8  2</tspan>
+			<tspan dy="24" x="216.73723453472718" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">5</tspan>
+		</text>
+		<rect x="178.27185120027067" y="262.7636132024539" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="203.27185120027067" cy="274.7636132024539" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="203.27185120027067" y="281.013615565064" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3</tspan>
+			</text>
+		</a>
+		<circle cx="203.27185120027067" cy="300.7636132024539" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="203.27185120027067" y="306.263615565064" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">8</tspan>
+			</text>
+		</a>
+		<text x="203.27185120027067" y="282.763615565064" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">4  7</tspan>
+			<tspan dy="24" x="203.27185120027067" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1</tspan>
+		</text>
+		<rect x="230.25530213385645" y="191.73723453472715" width="50" height="50" r="5" rx="5" ry="5" fill="#eeeeee" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></rect>
+		<circle cx="255.25530213385645" cy="203.73723453472715" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="255.25530213385645" y="209.9872406758996" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2</tspan>
+			</text>
+		</a>
+		<circle cx="255.25530213385645" cy="229.73723453472715" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="255.25530213385645" y="235.2372406758996" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7</tspan>
+			</text>
+		</a>
+		<text x="255.25530213385645" y="211.7372406758996" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3  6</tspan>
+			<tspan dy="24" x="255.25530213385645" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">9</tspan>
+		</text>
+		<circle cx="340" cy="300" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда года">
+			<text x="340" y="306.25" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 18px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="18px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">1</tspan>
+			</text>
+		</a>
+		<circle cx="340" cy="330" r="10" fill="#ffffff" stroke="#ffffff" fill-opacity="0.7" stroke-width="2" stroke-opacity="0.8" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0.7; stroke-width: 2; stroke-opacity: 0.8; opacity: 0;" opacity="0"></circle>
+		<text x="340" y="335.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="16px" opacity="0">
+			<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">6</tspan>
+		</text>
+		<a style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:title="Звезда месяца">
+			<text x="315" y="311" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: bold; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial, Helvetica; opacity: 0;" font-family="Arial, Helvetica" font-size="20px" font-weight="bold" opacity="0">
+				<tspan style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2  5</tspan>
+				<tspan dy="24" x="315" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">8</tspan>
+			</text>
+		</a>
+	</g>
+	<g id="angel_select"  style="display:none">
+		<path fill="none" stroke="#ee0000" d="M315,315L315,56.5" stroke-width="2" stroke-opacity="1"  style="stroke-width: 2; stroke-opacity: 1; "></path>
+		<path fill="none" stroke="#ee0000" d="M370,315L260,315" stroke-width="2" stroke-opacity="1"  style="stroke-width: 2; stroke-opacity: 1; "></path>
+		<circle cx="315" cy="46.5" r="10" fill="red" stroke="#ee0000" stroke-width="2" stroke-opacity="1" opacity="1" fill-opacity="1" style=" stroke-width: 2; stroke-opacity: 1; opacity: 1; fill-opacity: 1; cursor: move; "></circle>
+	</g>
+</svg>
+      </div>
+      <div id="map" Gapi='AIzaSyB7p6Wj-1BN2HycCoCk1CX5An-q1EqT9zI'>
+
+      </div>
+
+    </div>
+    <div class="col-sm-12" id='map_phone'><p>Ради вашего удобства. Данный инструмент <i style="color: red">не доступен</i> для маленьких экранов.</p></div>
+  </div>
+  <div class="map_footer text-center">
+    <p>инструмент создан <a href="http://uniquesite.ru" target="_blank">uniquesite.ru</a></p>
+  </div>
+</div>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+#site_menu {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 45px;
+  background-color: white !important;
+  left: 0;
+  top: 0; }
+  #site_menu a {
+    top: 9px;
+    position: relative;
+    left: 15px;
+    color: white; }
+
+.label-default {
+  background-color: black !important; }
+
+#map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1; }
+  #map_settings {
+    position: absolute;
+    width: 630px;
+    height: 630px;
+    top: 50px;
+    left: 0;
+    z-index: 1;
+    background-color: transparent; }
+  #map_menu {
+    top: 120px;
+    right: 10px;
+    padding: 10px;
+    position: fixed;
+    width: 300px;
+    height: auto;
+    z-index: 2;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-family: "ChinaCyr" !important; }
+    #map_menu a {
+      color: black; }
+      #map_menu a:hover {
+        color: magenta; }
+  #map_phone {
+    top: 50px;
+    margin: auto 0;
+    display: none; }
+
+select.form-control {
+  font-size: 1em;
+  font-family: "ChinaCyr" !important; }
+  select.form-control option {
+    font-family: "ChinaCyr" !important;
+    font-size: 1em; }
+
+@media (max-width: 768px) {
+  #maps {
+    display: none; }
+
+  #map_phone {
+    display: block; } }
+.form-control {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important; }
+
+#error_people {
+  font-family: "ChinaCyr" !important; }
+
+.row .goa {
+  padding: 0px; }
+  .row .goa div {
+    height: 130px;
+    background-color: black;
+    border-radius: 10px; }
+
+#goa {
+  display: none;
+  text-align: center; }
+
+#goa_people_5 {
+  color: white;
+  font-size: 4em;
+  line-height: 1.8em; }
+
+.map_footer {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: auto;
+  margin: auto 0;
+  padding: 0; }
+  .map_footer a {
+    color: black; }
+    .map_footer a:hover {
+      color: magenta; }
+  .map_footer p {
+    color: black; }
+
+ul#top-menu li a {
+  color: black; }
+  ul#top-menu li a::after {
+    top: 8px !important; }
+  ul#top-menu li a:hover {
+    color: 41.1764705882% !important; }
+
+ul#top-menu li.current-menu-item a {
+  color: #b21ab8 !important; }
+  ul#top-menu li.current-menu-item a::after {
+    top: 8px !important; }
+
+ul#top-menu li ul.sub-menu {
+  text-transform: uppercase;
+  background-color: #b21ab8 !important;
+  border-top: #b21ab8 !important;
+  color: black !important; }
+  ul#top-menu li ul.sub-menu li a {
+    color: white !important; }
+    ul#top-menu li ul.sub-menu li a:hover {
+      color: 41.1764705882% !important; }
+
+/*# sourceMappingURL=index.css.map */

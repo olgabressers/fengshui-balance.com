@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name='author' content="http://uniquesite.ru">
+    <meta name='copyright' content="https://fengshui-consultant.ru/">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7p6Wj-1BN2HycCoCk1CX5An-q1EqT9zI&libraries=places"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src='js/goa.js'></script>
+    <script src='js/baczi.js'></script>
+    <link rel="stylesheet" href="css/calc.css">
+    <link rel="stylesheet" href="css/usin.css">
+</head>
+<body>
+
+    <div class="container goa " id="allbox">
+    <div class="row ">
+      <div class="col-md-12">
+        <h2>Калькулятор Ба Цзы человека</h2>
+        <p class="text-left"></p>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="form-group">
+            <input type="text" class="form-control" id='fio' placeholder="Ф.И.О">
+            <select class="form-control" type="select" id="sex_people">
+              <option value="0">Выбрать</option>
+              <option value="m">Мужчина</option>
+              <option value="z">Женщина</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <input class="form-control" style="width: 6em;" type="number" id='year' value="2026" max="2027" min="1930" >
+            <select class="form-control" id="mounth" style="width: 11em" data-mounth-now='5'>
+              <option value='1' selected>Январь</option>
+              <option value='2'>Февраь</option>
+              <option value='3'>Март</option>
+              <option value='4'>Апрель</option>
+              <option value='5'>Май</option>
+              <option value='6'>Июнь</option>
+              <option value='7'>Июль</option>
+              <option value='8'>Август</option>
+              <option value='9'>Сентябрь</option>
+              <option value='10'>Октябрь</option>
+              <option value='11'>Ноябрь</option>
+              <option value='12'>Декабрь</option>
+            </select>
+            <select class="form-control" id="day" style="width: 4em"></select>
+            <select class="form-control" id='hour' style="width: 4em">
+              <option value='hour'>час</option>
+              <option value='0'>00</option><option value='1'>01</option><option value='2'>02</option><option value='3'>03</option><option value='4'>04</option><option value='5'>05</option><option value='6'>06</option><option value='7'>07</option><option value='8'>08</option><option value='9'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='21'>21</option><option value='22'>22</option><option value='23'>23</option>            </select>
+            <select class="form-control" id='min' style="width: 4em">
+              <option value='min'>мин.</option>
+              <option value='0'>00</option><option value='1'>01</option><option value='2'>02</option><option value='3'>03</option><option value='4'>04</option><option value='5'>05</option><option value='6'>06</option><option value='7'>07</option><option value='8'>08</option><option value='9'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option><option value='13'>13</option><option value='14'>14</option><option value='15'>15</option><option value='16'>16</option><option value='17'>17</option><option value='18'>18</option><option value='19'>19</option><option value='20'>20</option><option value='21'>21</option><option value='22'>22</option><option value='23'>23</option><option value='24'>24</option><option value='25'>25</option><option value='26'>26</option><option value='27'>27</option><option value='28'>28</option><option value='29'>29</option><option value='30'>30</option><option value='31'>31</option><option value='32'>32</option><option value='33'>33</option><option value='34'>34</option><option value='35'>35</option><option value='36'>36</option><option value='37'>37</option><option value='38'>38</option><option value='39'>39</option><option value='40'>40</option><option value='41'>41</option><option value='42'>42</option><option value='43'>43</option><option value='44'>44</option><option value='45'>45</option><option value='46'>46</option><option value='47'>47</option><option value='48'>48</option><option value='49'>49</option><option value='50'>50</option><option value='51'>51</option><option value='52'>52</option><option value='53'>53</option><option value='54'>54</option><option value='55'>55</option><option value='56'>56</option><option value='57'>57</option><option value='58'>58</option><option value='59'>59</option>            </select>
+
+            <input type="hidden" id='timestamp' class='form-control'>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <input type="text" class="form-control" name="address" placeholder="Место рождения" autocomplete='street-address'>
+            <button class="btn btn-default" name='search'>
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+
+            <select class="form-control" id="utc" style="width: 6em;">
+              <option value="-12">-12</option>
+              <option value="-11.5">-11.5</option>
+              <option value="-11">-11</option>
+              <option value="-10.5">-10.5</option>
+              <option value="-10">-10</option>
+              <option value="-9.5">-9.5</option>
+              <option value="-9">-9</option>
+              <option value="-8.5">-8.5</option>
+              <option value="-8">-8</option>
+              <option value="-7.5">-7.5</option>
+              <option value="-7">-7</option>
+              <option value="-6.5">-6.5</option>
+              <option value="-6">-6</option>
+              <option value="-5.5">-5.5</option>
+              <option value="-5">-5</option>
+              <option value="-4.5">-4.5</option>
+              <option value="-4">-4</option>
+              <option value="-3.5">-3.5</option>
+              <option value="-3">-3</option>
+              <option value="-2.5">-2.5</option>
+              <option value="-2">-2</option>
+              <option value="-1.5">-1.5</option>
+              <option value="-1">-1</option>
+              <option value="-0.5">-0.5</option>
+              <option value="0" selected>0</option>
+              <option value="+0.5">+0.5</option>
+              <option value="+1">+1</option>
+              <option value="+1.5">+1.5</option>
+              <option value="+2">+2</option>
+              <option value="+2.5">+2.5</option>
+              <option value="+3">+3</option>
+              <option value="+3.5">+3.5</option>
+              <option value="+4">+4</option>
+              <option value="+4.5">+4.5</option>
+              <option value="+5">+5</option>
+              <option value="+5.5">+5.5</option>
+              <option value="+6">+6</option>
+              <option value="+6.5">+6.5</option>
+              <option value="+7">+7</option>
+              <option value="+7.5">+7.5</option>
+              <option value="+8">+8</option>
+              <option value="+8.5">+8.5</option>
+              <option value="+9">+9</option>
+              <option value="+9.5">+9.5</option>
+              <option value="+10">+10</option>
+              <option value="+10.5">+10.5</option>
+              <option value="+11">+11</option>
+              <option value="+11.5">+11.5</option>
+              <option value="+12">+12</option>
+            </select>
+              <input type="hidden" id="lat" placeholder="Широта" class="form-control">
+              <input type="hidden" id="lon" placeholder="Долгота" class="form-control">
+          </div>
+          <div class="checkbox" id="decCheck" style="display: none">
+            <label><input type="checkbox" id="magnetdec"> Местное солнечное время</label>
+          </div>
+        </div>
+        <center><button class="btn btn-default" id='submit'>Рассчитать</button></center>
+      </div>
+    </div>
+    <div id="results"></div>
+  </div>
+
+    <script>
+        $('#year').change(function(){
+            if($('#year').val()<1930){
+                $('#year').val(1930)
+            }
+        })
+    </script>
+</body>
+</html>
