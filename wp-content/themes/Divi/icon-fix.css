@@ -1,0 +1,39 @@
+/* Fix broken Divi ETmodules icon font (font files missing on static migration).
+   Replaces fallback character glyphs ("3", "U", etc.) with Unicode equivalents
+   that render in any system font. */
+
+/* Dropdown arrow on menu items with submenus (was "3" in ETmodules) */
+#top-menu .menu-item-has-children > a:first-child:after,
+#et-secondary-nav .menu-item-has-children > a:first-child:after,
+.fullwidth-menu .menu-item-has-children > a:first-child:after {
+  font-family: inherit !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  content: " \25BE" !important;
+  position: static !important;
+  margin-left: 4px !important;
+  color: inherit !important;
+}
+
+/* Search icon in header (was "U" in ETmodules) */
+#et_search_icon:before,
+#et_top_search .et-search-form button[type="submit"]:before {
+  font-family: inherit !important;
+  content: "\1F50D" !important;
+  font-size: 18px !important;
+  position: static !important;
+  color: inherit !important;
+}
+
+/* Mobile menu hamburger icon */
+.mobile_menu_bar:before {
+  font-family: inherit !important;
+  content: "\2630" !important;
+  font-size: 20px !important;
+}
+
+/* Scroll-to-top arrow */
+.et_pb_scroll_top.et-pb-icon:before {
+  font-family: inherit !important;
+  content: "\2191" !important;
+}
