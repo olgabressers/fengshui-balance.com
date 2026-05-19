@@ -197,38 +197,54 @@ var cnArgs = {"ajaxurl":"","hideEffect":"fade","onScroll":"","onScrollOffset":"1
 				
 				
 				
-			<div id="et_pb_contact_form_0" class="et_pb_module et_pb_contact_form_container clearfix  et_pb_contact_form_0" data-form_unique_num="0">
-				<h1 class="et_pb_contact_main_title">Свяжитесь с нами</h1>
-				<div class="et-pb-contact-message"></div>
+			<style>
+				.fb-form-wrap { max-width: 560px; margin: 40px auto; background: #ffffff; border-radius: 16px; border: 1px solid #ece8f0; padding: 40px; box-shadow: 0 4px 24px rgba(146, 71, 147, 0.08); font-family: 'Open Sans', sans-serif; }
+				.fb-form-title { font-size: 28px; font-weight: 700; color: #1a1a1a; margin: 0 0 8px 0; line-height: 1.2; }
+				.fb-form-subtitle { font-size: 15px; color: #666; margin: 0 0 28px 0; line-height: 1.5; }
+				.fb-form-field { margin-bottom: 18px; display: flex; flex-direction: column; gap: 6px; }
+				.fb-form-field label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #555; }
+				.fb-form-field input, .fb-form-field textarea { border: 1.5px solid #e2dfe6; border-radius: 10px; padding: 13px 16px; font-size: 15px; font-family: inherit; color: #1a1a1a; background: #fafafa; outline: none; transition: border-color 0.15s, background 0.15s; width: 100%; box-sizing: border-box; }
+				.fb-form-field input:focus, .fb-form-field textarea:focus { border-color: #924793; background: #ffffff; }
+				.fb-form-field textarea { min-height: 140px; resize: vertical; font-family: inherit; }
+				.fb-submit-btn { width: 100%; background: #924793; color: #ffffff; border: none; border-radius: 10px; padding: 15px 24px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.15s, transform 0.05s; margin-top: 8px; font-family: inherit; }
+				.fb-submit-btn:hover:not(:disabled) { background: #7a3a7c; }
+				.fb-submit-btn:active:not(:disabled) { transform: translateY(1px); }
+				.fb-submit-btn:disabled { background: #b89cba; cursor: not-allowed; }
+				.fb-form-success, .fb-form-error { padding: 20px; border-radius: 10px; font-size: 15px; text-align: center; line-height: 1.5; }
+				.fb-form-success { background: #f0f8e8; border: 1px solid #b8d894; color: #2d5016; }
+				.fb-form-error { background: #fbe8e8; border: 1px solid #d89494; color: #5a1010; }
+				.fb-form-privacy { font-size: 12px; color: #888; margin-top: 16px; line-height: 1.5; text-align: center; }
+			</style>
 
-				<div class="et_pb_contact">
-					<form id="fb-contact-form" class="et_pb_contact_form clearfix" onsubmit="submitFbContact(event)">
+			<div class="fb-form-wrap">
+				<h1 class="fb-form-title">Свяжитесь с нами</h1>
+				<p class="fb-form-subtitle">Заполните форму, и мы ответим вам в ближайшее время.</p>
 
-<p class="et_pb_contact_field et_pb_contact_field_0 et_pb_contact_field_half" data-id="name" data-type="input">
-				<label for="et_pb_contact_name_1" class="et_pb_contact_form_label">Ваше Имя</label>
-				<input type="text" id="et_pb_contact_name_1" class="input" value="" name="name" required placeholder="Ваше Имя">
-			</p><p class="et_pb_contact_field et_pb_contact_field_1 et_pb_contact_field_half et_pb_contact_field_last" data-id="email" data-type="email">
-				<label for="et_pb_contact_email_1" class="et_pb_contact_form_label">Электронный адрес</label>
-				<input type="email" id="et_pb_contact_email_1" class="input" value="" name="email" required placeholder="Электронный адрес">
-			</p><p class="et_pb_contact_field et_pb_contact_field_2 et_pb_contact_field_last" data-id="message" data-type="text">
-				<label for="et_pb_contact_message_1" class="et_pb_contact_form_label">Сообщение (отправляя сообщение, я даю свое согласие на обработку моих персональных данных)</label>
-				<textarea name="message" id="et_pb_contact_message_1" class="et_pb_contact_message input" required placeholder="Сообщение (отправляя сообщение, я даю свое согласие на обработку моих персональных данных)"></textarea>
-			</p>
-			<input type="hidden" name="_subject" value="Новое сообщение с сайта Fengshui-Balance">
-			<input type="text" name="_gotcha" style="display:none">
-
-						<div class="et_contact_bottom_container">
-							<button type="submit" class="et_pb_contact_submit et_pb_button">Отправить</button>
-						</div>
-					</form>
-					<div id="fb-contact-done" style="display:none; padding:20px; background:#f0f8e8; border:1px solid #b8d894; border-radius:4px; color:#2d5016; font-size:16px; text-align:center;">
-						Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.
+				<form id="fb-contact-form" onsubmit="submitFbContact(event)">
+					<div class="fb-form-field">
+						<label for="fb-name">Имя</label>
+						<input type="text" id="fb-name" name="name" required placeholder="Ваше имя">
 					</div>
-					<div id="fb-contact-error" style="display:none; padding:20px; background:#fbe8e8; border:1px solid #d89494; border-radius:4px; color:#5a1010; font-size:16px; text-align:center;">
-						Ошибка отправки. Попробуйте позже или напишите напрямую на fengshuibalance2017@gmail.com.
+					<div class="fb-form-field">
+						<label for="fb-email">Email</label>
+						<input type="email" id="fb-email" name="email" required placeholder="your@email.com">
 					</div>
-				</div> <!-- .et_pb_contact -->
-			</div> <!-- .et_pb_contact_form_container -->
+					<div class="fb-form-field">
+						<label for="fb-message">Сообщение</label>
+						<textarea id="fb-message" name="message" required placeholder="Расскажите, чем мы можем помочь…"></textarea>
+					</div>
+					<input type="hidden" name="_subject" value="Новое сообщение с сайта Fengshui-Balance">
+					<input type="text" name="_gotcha" style="display:none">
+					<button type="submit" class="fb-submit-btn">Отправить сообщение</button>
+					<p class="fb-form-privacy">Отправляя сообщение, вы соглашаетесь на обработку персональных данных.</p>
+				</form>
+				<div id="fb-contact-done" class="fb-form-success" style="display:none;">
+					Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.
+				</div>
+				<div id="fb-contact-error" class="fb-form-error" style="display:none;">
+					Ошибка отправки. Попробуйте позже или напишите напрямую на fengshuibalance2017@gmail.com.
+				</div>
+			</div>
 			<script>
 			async function submitFbContact(e) {
 				e.preventDefault();
@@ -248,11 +264,11 @@ var cnArgs = {"ajaxurl":"","hideEffect":"fade","onScroll":"","onScrollOffset":"1
 						document.getElementById('fb-contact-done').style.display = 'block';
 					} else {
 						errEl.style.display = 'block';
-						if (btn) { btn.textContent = 'Отправить'; btn.disabled = false; }
+						if (btn) { btn.textContent = 'Отправить сообщение'; btn.disabled = false; }
 					}
 				} catch (err) {
 					errEl.style.display = 'block';
-					if (btn) { btn.textContent = 'Отправить'; btn.disabled = false; }
+					if (btn) { btn.textContent = 'Отправить сообщение'; btn.disabled = false; }
 				}
 			}
 			</script>
