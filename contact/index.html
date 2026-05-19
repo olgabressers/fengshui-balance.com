@@ -82,7 +82,7 @@ var cnArgs = {"ajaxurl":"","hideEffect":"fade","onScroll":"","onScrollOffset":"1
 			
 				<div id="et-info">
 				
-									<a href="mailto:support@fengshui-balance.com"><span id="et-info-email">support@fengshui-balance.com</span></a>
+									<a href="mailto:fengshuibalance2017@gmail.com"><span id="et-info-email">fengshuibalance2017@gmail.com</span></a>
 				
 								</div> <!-- #et-info -->
 
@@ -200,27 +200,62 @@ var cnArgs = {"ajaxurl":"","hideEffect":"fade","onScroll":"","onScrollOffset":"1
 			<div id="et_pb_contact_form_0" class="et_pb_module et_pb_contact_form_container clearfix  et_pb_contact_form_0" data-form_unique_num="0">
 				<h1 class="et_pb_contact_main_title">Свяжитесь с нами</h1>
 				<div class="et-pb-contact-message"></div>
-				
+
 				<div class="et_pb_contact">
-					<form class="et_pb_contact_form clearfix" method="post" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID">
-							
+					<form id="fb-contact-form" class="et_pb_contact_form clearfix" onsubmit="submitFbContact(event)">
+
 <p class="et_pb_contact_field et_pb_contact_field_0 et_pb_contact_field_half" data-id="name" data-type="input">
 				<label for="et_pb_contact_name_1" class="et_pb_contact_form_label">Ваше Имя</label>
-				<input type="text" id="et_pb_contact_name_1" class="input" value="" name="name" required data-field_type="input" placeholder="Ваше Имя">
+				<input type="text" id="et_pb_contact_name_1" class="input" value="" name="name" required placeholder="Ваше Имя">
 			</p><p class="et_pb_contact_field et_pb_contact_field_1 et_pb_contact_field_half et_pb_contact_field_last" data-id="email" data-type="email">
 				<label for="et_pb_contact_email_1" class="et_pb_contact_form_label">Электронный адрес</label>
-				<input type="email" id="et_pb_contact_email_1" class="input" value="" name="email" required data-field_type="email" placeholder="Электронный адрес">
+				<input type="email" id="et_pb_contact_email_1" class="input" value="" name="email" required placeholder="Электронный адрес">
 			</p><p class="et_pb_contact_field et_pb_contact_field_2 et_pb_contact_field_last" data-id="message" data-type="text">
 				<label for="et_pb_contact_message_1" class="et_pb_contact_form_label">Сообщение (отправляя сообщение, я даю свое согласие на обработку моих персональных данных)</label>
-				<textarea name="message" id="et_pb_contact_message_1" class="et_pb_contact_message input" required data-field_type="text" placeholder="Сообщение (отправляя сообщение, я даю свое согласие на обработку моих персональных данных)"></textarea>
+				<textarea name="message" id="et_pb_contact_message_1" class="et_pb_contact_message input" required placeholder="Сообщение (отправляя сообщение, я даю свое согласие на обработку моих персональных данных)"></textarea>
 			</p>
+			<input type="hidden" name="_subject" value="Новое сообщение с сайта Fengshui-Balance">
+			<input type="text" name="_gotcha" style="display:none">
 
 						<div class="et_contact_bottom_container">
 							<button type="submit" class="et_pb_contact_submit et_pb_button">Отправить</button>
 						</div>
 					</form>
+					<div id="fb-contact-done" style="display:none; padding:20px; background:#f0f8e8; border:1px solid #b8d894; border-radius:4px; color:#2d5016; font-size:16px; text-align:center;">
+						Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.
+					</div>
+					<div id="fb-contact-error" style="display:none; padding:20px; background:#fbe8e8; border:1px solid #d89494; border-radius:4px; color:#5a1010; font-size:16px; text-align:center;">
+						Ошибка отправки. Попробуйте позже или напишите напрямую на fengshuibalance2017@gmail.com.
+					</div>
 				</div> <!-- .et_pb_contact -->
 			</div> <!-- .et_pb_contact_form_container -->
+			<script>
+			async function submitFbContact(e) {
+				e.preventDefault();
+				const form = e.target;
+				const btn = form.querySelector('button[type=submit]');
+				const errEl = document.getElementById('fb-contact-error');
+				errEl.style.display = 'none';
+				if (btn) { btn.textContent = 'Отправка…'; btn.disabled = true; }
+				try {
+					const res = await fetch('https://formspree.io/f/xaqkqweb', {
+						method: 'POST',
+						headers: { 'Accept': 'application/json' },
+						body: new FormData(form)
+					});
+					if (res.ok) {
+						form.style.display = 'none';
+						document.getElementById('fb-contact-done').style.display = 'block';
+					} else {
+						errEl.style.display = 'block';
+						if (btn) { btn.textContent = 'Отправить'; btn.disabled = false; }
+					}
+				} catch (err) {
+					errEl.style.display = 'block';
+					if (btn) { btn.textContent = 'Отправить'; btn.disabled = false; }
+				}
+			}
+			</script>
 			
 			</div> <!-- .et_pb_column --><div class="et_pb_column et_pb_column_1_3  et_pb_column_1">
 				
@@ -258,7 +293,7 @@ var cnArgs = {"ajaxurl":"","hideEffect":"fade","onScroll":"","onScrollOffset":"1
 <p>Fengshui-balance.com собирает и хранит информацию, которую Вы предоставляете, отправляя заявку. Это Ваше имя и электронный адрес.</p>
 <p>Данная информация используется для обратной связи с Вами, рассылки с анонсами мероприятий и подключении Вас к трансляции вебинаров, после Вашей регистрации.</p>
 <p>Ваша информация конфиденциальна и не передается третьим лицам.</p>
-<p>Если по каким-то причинам Вы хотите прекратить получать информация от fengshui-balance.com, то для этого отправьте заявку на support@fengshui-balance.com и Вы будете исключены из рассылки.</p>
+<p>Если по каким-то причинам Вы хотите прекратить получать информация от fengshui-balance.com, то для этого отправьте заявку на fengshuibalance2017@gmail.com и Вы будете исключены из рассылки.</p>
 
 				</div>
 			</div> <!-- .et_pb_text -->
